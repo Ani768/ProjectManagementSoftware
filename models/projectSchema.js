@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+
+
 const projectSchema = new Schema({
     name: {
         type: String,
@@ -77,12 +79,6 @@ const projectSchema = new Schema({
     url:{
         type: String,
 
-    },
-    progress: {
-        type: Number,
-        min: 0,
-        max: 100,
-        default: 0,
     },
     tags: [{
         type: String,
