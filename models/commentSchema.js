@@ -2,34 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-const reactionSchema = new Schema({
-    emoji: {
-        type: String,
-        required: true
-    },
-    reactedBy: [{
-        type: Schema.Types.ObjectId,
-        ref: "User"
-    }]
-});
-
-const resolvedSchema = new Schema({
-    resolved: {
-        type: Boolean,
-        default: false
-    },
-    resolvedBy: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-    },
-    resolvedAt:{
-        type:Date,
-    },
-
-},
-{timestamps:{resolvedTime: 'resolvedTime'}}
-);
-
 const commentSchema = new Schema({
     content: {
         type: String,
@@ -58,7 +30,6 @@ const commentSchema = new Schema({
         fileUrl: String,
         fileSize: Number
     }],
-    reactions: [reactionSchema],
     mentions: [{
         user: {
             type: Schema.Types.ObjectId,
@@ -71,22 +42,16 @@ const commentSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Comments",
     },
-    resolved: [
-        {
-            resolved: {
-                type: Boolean,
-                default: false
-            },
-            resolvedBy: {
-                type: Schema.Types.ObjectId,
-                ref: "User",
-            },
-            resolvedAt:{
-                type:Dazste,
-            },
-        }
-    ],
-    threadParticipants: [{
+    resolved:{
+        type:Schema.Types.ObjectId,
+        ref:"action",
+    },
+
+    reaction:{
+        types:Schema.Types.ObjectId,
+        ref:"action"
+    },
+  Participants:[{
         type: Schema.Types.ObjectId,
         ref: "User",
     },],
@@ -99,6 +64,4 @@ const commentSchema = new Schema({
 });
 
 
-const Comment = mongoose.model("Comments", commentSchema);
-
-module.exports = Comment;
+module.exports = mongoose.model('Comments',commentSchema);

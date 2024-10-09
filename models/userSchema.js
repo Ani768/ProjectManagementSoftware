@@ -3,6 +3,9 @@ const Schema= mongoose.Schema;
 
 const userSchema = new Schema(
     {
+      username: {
+        type:String,required:true
+      },
       email: {
         type: String,
         required: true,
@@ -16,19 +19,24 @@ const userSchema = new Schema(
         type: String,
         required: true,
       },
-      phoneNumber: {
+      roleId:{
+        type:String,required:true
+      },
+      roleName:{
+        type:String,required:true
+      },
+      roleType:{
+        type:String,enum:['Admin',"Viewer","Editor"],default:"Viewer"
+      },
+      phoneNumber:{
          type: Number,
          required: true,
       },
-      isActive: {
-        type: Boolean,
-        required: true,
-        default: false,
+      status:{
+        type:String,enum:['Active','Inactive'],default:'Inactive'
       },
-      role: {
-        type: String,
-        enum: ["Admin", "Editor", "Viewer"],
-        default: "Viewer",
+      city:{
+        type:String,required:true
       },
     },
     { timestamps: true }

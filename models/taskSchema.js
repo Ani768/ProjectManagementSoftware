@@ -3,7 +3,6 @@ const Schema=  mongoose.Schema;
 
 const taskSchema = new Schema(
     {
-
         name: {
             type: String,
             required: true,
@@ -83,13 +82,6 @@ const taskSchema = new Schema(
           type: Number,
         },
 
-        progress: {
-          type: Number,
-          min: 0,
-          max: 100,
-          default: 0,
-      },
-
           dueDate: {
             type: Date,
           },
@@ -101,8 +93,7 @@ const taskSchema = new Schema(
           completionDate: {
             type: Date,
           },
-
-          
+  
           createdBy: {
             type: Schema.Types.ObjectId,
             ref: "User",
@@ -117,14 +108,6 @@ const taskSchema = new Schema(
                 ref: "Comments",
             },
         ],
-        canComment: 
-        [
-            {
-                type: Schema.Types.ObjectId,
-                ref: "User", 
-            },
-        ],
-
     }, {
     timestamps:{
       createdAt: 'createdTime', updatedAt: 'lastEditedTime'},
